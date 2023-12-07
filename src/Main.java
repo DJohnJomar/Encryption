@@ -23,12 +23,12 @@ public class Main {
         //Caesar Cypher uisng the map
         String caesarStr = "";
         for(int i = 0; i <origStr.length();i++){
-            caesarStr+= caesarMap.get(Character.toLowerCase(origStr.charAt(i)));
+            caesarStr+= caesarMap.get(origStr.charAt(i));
         }
         //Convert to each character to binary.
         String binaryStr = "";
         for(int i = 0; i <caesarStr.length();i++){
-           binaryStr += String.format("%8s", Integer.toBinaryString(Character.toLowerCase(caesarStr.charAt(i)))).replace(" ","0");
+           binaryStr += String.format("%8s", Integer.toBinaryString(caesarStr.charAt(i))).replace(" ","0");
         }
         return binaryStr;
     }
@@ -92,5 +92,33 @@ public class Main {
         caesarMap.put('x','u');
         caesarMap.put('y','v');
         caesarMap.put('z','w');
+        
+        caesarMap.put('A','X');
+        caesarMap.put('B','Y');
+        caesarMap.put('C','Z');
+        caesarMap.put('D','A');
+        caesarMap.put('E','B');
+        caesarMap.put('F','C');
+        caesarMap.put('G','D');
+        caesarMap.put('H','E');
+        caesarMap.put('I','F');
+        caesarMap.put('J','G');
+        caesarMap.put('K','H');
+        caesarMap.put('L','I');
+        caesarMap.put('M','J');
+        caesarMap.put('N','K');
+        caesarMap.put('O','L');
+        caesarMap.put('P','M');
+        caesarMap.put('Q','N');
+        caesarMap.put('R','O');
+        caesarMap.put('S','P');
+        caesarMap.put('T','Q');
+        caesarMap.put('U','R');
+        caesarMap.put('V','S');
+        caesarMap.put('W','T');
+        caesarMap.put('X','U');
+        caesarMap.put('Y','V');
+        caesarMap.put('Z','W');
+        
     }
 }
