@@ -23,7 +23,7 @@ public class Main {
         //Convert to each character to binary.
         String binaryStr = "";
         for(int i = 0; i <caesarStr.length();i++){
-           binaryStr += String.format("%8s", Integer.toBinaryString(Character.toLowerCase(caesarStr.charAt(i)))).replace(" ","0")+" ";
+           binaryStr += String.format("%8s", Integer.toBinaryString(Character.toLowerCase(caesarStr.charAt(i)))).replace(" ","0");
         }
         return binaryStr;
     }
