@@ -32,6 +32,8 @@ public class Main {
         }
         return binaryStr;
     }
+
+    //Decryption function
     public static String decrypt(String origStr){
         String binaryCharacter = "";
         String decryptedStr= "";
@@ -50,13 +52,10 @@ public class Main {
             }
             ctr++;
         }
-
+        //Caesar cypher decryption
          for(int i = 0 ; i<strContainer.length();i++){
             char currentChar = strContainer.charAt(i);
             for(Map.Entry<Character, Character> entry : caesarMap.entrySet()){
-                // System.out.println("Entry key:"+entry.getKey());
-                // System.out.println("Entry value: "+entry.getValue());
-                // System.out.println("Current Char: "+currentChar);
                 if(entry.getValue() == currentChar){
                     decryptedStr+=entry.getKey();
                 }
