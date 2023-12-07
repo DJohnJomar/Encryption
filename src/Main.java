@@ -4,14 +4,17 @@ public class Main {
     private static HashMap<Character, Character> caesarMap = new HashMap<>();
     public static void main(String[] args) throws Exception {
        putValuesToMap();
-       String str = "malwares";
+       String str = "ABC";
        String encryptedStr = encrypt(str);
        System.out.println(encryptedStr);
+       String decryptedStr = decrypt(encryptedStr);
+       System.out.println(decryptedStr);
 
 
         
     }
 
+    //Encrypts a string using -3 shift caesar cypher converted to binary string
     public static String encrypt(String origStr){
         if(origStr == "")
         return "";
@@ -26,6 +29,25 @@ public class Main {
            binaryStr += String.format("%8s", Integer.toBinaryString(Character.toLowerCase(caesarStr.charAt(i)))).replace(" ","0");
         }
         return binaryStr;
+    }
+    public static String decrypt(String origStr){
+        String binaryCharacter = "";
+        String decryptedStr= "";
+        int binaryIntValue= 0 ;
+        int ctr = 1;
+
+        for(int i = 0 ; i<origStr.length();i++){
+            binaryCharacter+=origStr.charAt(i);
+            if(ctr==8){
+                binaryIntValue = Integer.parseInt(binaryCharacter,2);
+                decryptedStr+=(char) binaryIntValue;
+                binaryCharacter = "";
+                ctr=1;
+                continue;
+            }
+            ctr++;
+        }
+        return decryptedStr;
     }
     //Caesar Cyperh -3 shift
     public static void putValuesToMap(){
