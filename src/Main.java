@@ -5,7 +5,7 @@ public class Main {
     private static HashMap<Character, Character> caesarMap = new HashMap<>();
     public static void main(String[] args) throws Exception {
        putValuesToMap();
-       String str = "ABC";
+       String str = "Bwakanang Shiet";
        System.out.println("Value to encrypt: "+str);
        String encryptedStr = encrypt(str);
        System.out.println("Encrypted String: "+encryptedStr);
@@ -119,5 +119,6 @@ public class Main {
         caesarMap.put('Y','V');
         caesarMap.put('Z','W');
         
+        caesarMap.put(' ', ' ');
     }
 }
