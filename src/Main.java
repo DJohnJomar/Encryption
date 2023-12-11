@@ -52,7 +52,6 @@ public class Main {
             }
             ctr++;
         }
-        System.out.println("Decrypted String Characters: "+strContainer);
         //Caesar cypher decryption
          for(int i = 0 ; i<strContainer.length();i++){
             char currentChar = strContainer.charAt(i);
