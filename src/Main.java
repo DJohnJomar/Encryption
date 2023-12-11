@@ -5,18 +5,18 @@ public class Main {
     private static HashMap<Character, Character> caesarMap = new HashMap<>();
     public static void main(String[] args) throws Exception {
        putValuesToMap();
-       String str = "Bwakanang Shiet";
+       String str = "Group 3 Malwares XDX 6969 !@#$%";
        System.out.println("Value to encrypt: "+str);
        String encryptedStr = encrypt(str);
        System.out.println("Encrypted String: "+encryptedStr);
        String decryptedStr = decrypt(encryptedStr);
        System.out.println("Decrypted String: "+decryptedStr);
-
-
-        
+    //    for(Map.Entry<Character, Character> entry : caesarMap.entrySet()){
+    //     System.out.println("getKey: "+entry.getKey()+" getValue: "+entry.getValue());
+    //    }
+       
     }
-
-    //Encrypts a string using -3 shift caesar cypher converted to binary string
+    //Encrypts a string using caesar cypher converted to binary string
     public static String encrypt(String origStr){
         if(origStr == "")
         return "";
@@ -32,7 +32,7 @@ public class Main {
         }
         return binaryStr;
     }
-
+    
     //Decryption function
     public static String decrypt(String origStr){
         String binaryCharacter = "";
@@ -52,73 +52,36 @@ public class Main {
             }
             ctr++;
         }
+        System.out.println("Decrypted String Characters: "+strContainer);
         //Caesar cypher decryption
          for(int i = 0 ; i<strContainer.length();i++){
             char currentChar = strContainer.charAt(i);
             for(Map.Entry<Character, Character> entry : caesarMap.entrySet()){
                 if(entry.getValue() == currentChar){
+                    //System.out.println("getValue: "+entry.getValue()+" currentChar: "+currentChar);
                     decryptedStr+=entry.getKey();
+                    //System.out.println("getKey: "+entry.getKey());
                 }
             }
          }
+         
         return decryptedStr;
     }
-    //Caesar Cyperh -3 shift
+    //put values in the map with caesar cypher, only supports ASCII values (128 ASCII characters).
     public static void putValuesToMap(){
-        caesarMap.put('a','x');
-        caesarMap.put('b','y');
-        caesarMap.put('c','z');
-        caesarMap.put('d','a');
-        caesarMap.put('e','b');
-        caesarMap.put('f','c');
-        caesarMap.put('g','d');
-        caesarMap.put('h','e');
-        caesarMap.put('i','f');
-        caesarMap.put('j','g');
-        caesarMap.put('k','h');
-        caesarMap.put('l','i');
-        caesarMap.put('m','j');
-        caesarMap.put('n','k');
-        caesarMap.put('o','l');
-        caesarMap.put('p','m');
-        caesarMap.put('q','n');
-        caesarMap.put('r','o');
-        caesarMap.put('s','p');
-        caesarMap.put('t','q');
-        caesarMap.put('u','r');
-        caesarMap.put('v','s');
-        caesarMap.put('w','t');
-        caesarMap.put('x','u');
-        caesarMap.put('y','v');
-        caesarMap.put('z','w');
-        
-        caesarMap.put('A','X');
-        caesarMap.put('B','Y');
-        caesarMap.put('C','Z');
-        caesarMap.put('D','A');
-        caesarMap.put('E','B');
-        caesarMap.put('F','C');
-        caesarMap.put('G','D');
-        caesarMap.put('H','E');
-        caesarMap.put('I','F');
-        caesarMap.put('J','G');
-        caesarMap.put('K','H');
-        caesarMap.put('L','I');
-        caesarMap.put('M','J');
-        caesarMap.put('N','K');
-        caesarMap.put('O','L');
-        caesarMap.put('P','M');
-        caesarMap.put('Q','N');
-        caesarMap.put('R','O');
-        caesarMap.put('S','P');
-        caesarMap.put('T','Q');
-        caesarMap.put('U','R');
-        caesarMap.put('V','S');
-        caesarMap.put('W','T');
-        caesarMap.put('X','U');
-        caesarMap.put('Y','V');
-        caesarMap.put('Z','W');
-        
-        caesarMap.put(' ', ' ');
+        final int caesarShift = 10; //Other Values tend to break the cyphering, value = 10 works most of the time.
+        int keyCtr;
+        int valuesCtr;
+
+        for (keyCtr = 32; keyCtr <=126; keyCtr++){
+           valuesCtr = keyCtr+caesarShift;
+           if(valuesCtr>126){
+            valuesCtr = keyCtr+valuesCtr-95;
+           }
+           if(valuesCtr<32){
+            valuesCtr = keyCtr+valuesCtr+95;
+           }
+           caesarMap.put((char)keyCtr, (char)valuesCtr);
+        }
     }
 }
